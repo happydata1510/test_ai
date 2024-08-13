@@ -1,0 +1,25 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block header %}
+    <h2 class="mb-4">Please log in to continue</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <div class="card p-4 shadow-sm border-0" style="width: 400px;">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100 mt-4">Login</button>
+            </form>
+            
+            {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    Invalid login credentials, please try again.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
